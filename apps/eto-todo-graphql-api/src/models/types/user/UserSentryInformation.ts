@@ -1,3 +1,3 @@
 export class UserSentryInformation {
-    public constructor(public id: string, public email: string) {}
+  public constructor(public id: string, public email: string) {}
 }

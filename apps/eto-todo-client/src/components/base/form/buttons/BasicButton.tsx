@@ -7,8 +7,9 @@ interface BasicButtonProps {
   muted?: boolean;
 }
 
-const BasicButton: FC<React.ButtonHTMLAttributes<HTMLButtonElement> &
-  BasicButtonProps> = ({ muted, ...props }) => {
+const BasicButton: FC<
+  React.ButtonHTMLAttributes<HTMLButtonElement> & BasicButtonProps
+> = ({ muted, ...props }) => {
   return <Button {...props} />;
 };
 

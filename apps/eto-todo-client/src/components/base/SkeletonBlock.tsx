@@ -5,7 +5,7 @@ const SkeletonBlock = styled.div`
   animation-duration: 1.25s;
   animation-fill-mode: forwards;
   animation-iteration-count: infinite;
-  animation-name: placeHolderShimmer;
+  animation-name: placeholder-shimmer;
   animation-timing-function: linear;
   background: ${colors.textBackground};
   background: linear-gradient(

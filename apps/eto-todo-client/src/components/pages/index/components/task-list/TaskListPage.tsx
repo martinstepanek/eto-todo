@@ -8,24 +8,31 @@ import taskListTypeReadable from './taskListTypeReadable';
 import { ListHeading } from './ListHeading';
 import ListHeadingSeparator from './ListHeadingSeparator';
 import {
-    GetTasksQueryType,
-    GetTasksQueryVariablesType,
-    GetTodoTasksQueryType,
-    GetTodoTasksQueryVariablesType
-} from "../../../../../types/graphql";
+  GetTasksQueryType,
+  GetTasksQueryVariablesType,
+  GetTodoTasksQueryType,
+  GetTodoTasksQueryVariablesType,
+} from '../../../../../types/graphql';
 
 interface TaskListPageProps {
   listType: TaskListType;
 }
 
 const TaskListPage: FC<TaskListPageProps> = ({ listType }) => {
-  const {loading: todoLoading, data: todoData } = useQuery<GetTodoTasksQueryType, GetTodoTasksQueryVariablesType>(GET_TODO_TASKS);
+  const { loading: todoLoading, data: todoData } = useQuery<
+    GetTodoTasksQueryType,
+    GetTodoTasksQueryVariablesType
+  >(GET_TODO_TASKS);
 
-    const { loading, data } = useQuery<GetTasksQueryType, GetTasksQueryVariablesType>(GET_TASKS, {
-        // @ts-ignore
-        variables: { listType: listType === TaskListType.Todo  ? TaskListType.Today : listType},
-    });
-
+  const { loading, data } = useQuery<
+    GetTasksQueryType,
+    GetTasksQueryVariablesType
+  >(GET_TASKS, {
+    // @ts-ignore
+    variables: {
+      listType: listType === TaskListType.Todo ? TaskListType.Today : listType,
+    },
+  });
 
   if (loading || todoLoading) {
     return <>Loading</>;

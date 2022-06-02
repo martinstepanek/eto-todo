@@ -24,7 +24,7 @@ const ListPicker: FC<ListPickerProps> = ({
 }) => {
   const keys = Object.keys(taskListTypeReadable) as TaskListType[];
 
-  const selectedOptionIndex = keys.findIndex(key => key === value);
+  const selectedOptionIndex = keys.findIndex((key) => key === value);
   const isSelectedFirstOption = selectedOptionIndex === 0;
   const isSelectedLastOption = selectedOptionIndex === keys.length - 1;
 
@@ -40,7 +40,7 @@ const ListPicker: FC<ListPickerProps> = ({
     }
   };
 
-  const onSwipe = index => {
+  const onSwipe = (index) => {
     onChange(keys[index]);
   };
 
@@ -55,12 +55,12 @@ const ListPicker: FC<ListPickerProps> = ({
         />
         <SwipeableViews
           onChangeIndex={onSwipe}
-          index={keys.findIndex(key => key === value)}
+          index={keys.findIndex((key) => key === value)}
           disabled={isOpen}
           className="swipeable-options"
           slideClassName="swipeable-option"
         >
-          {keys.map(key => (
+          {keys.map((key) => (
             <div key={key}>{taskListTypeReadable[key]}</div>
           ))}
         </SwipeableViews>
@@ -71,7 +71,7 @@ const ListPicker: FC<ListPickerProps> = ({
           className={isOpen ? 'arrow-right arrow-right-hidden' : 'arrow-right'}
         />
       </div>
-      {keys.map(key => (
+      {keys.map((key) => (
         <div className="option" onClick={() => onChange(key)} key={key}>
           {taskListTypeReadable[key]}
         </div>

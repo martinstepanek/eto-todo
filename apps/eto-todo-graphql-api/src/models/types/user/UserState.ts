@@ -1,3 +1,3 @@
 export enum UserState {
-    Created,
+  Created,
 }

@@ -9,6 +9,7 @@ interface CreateTaskFormProps {
   onSubmit: () => void;
 }
 
+// eslint-disable-next-line react/display-name
 const CreateTaskForm = forwardRef<FormHandle, CreateTaskFormProps>(
   ({ onSubmit }, ref) => {
     const initialValues: TaskFormValues = {

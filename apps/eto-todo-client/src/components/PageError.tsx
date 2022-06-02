@@ -8,7 +8,7 @@ interface PageErrorProps {
 }
 
 const PageError: FC<PageErrorProps> = ({ title, ...props }) => {
-    const {reload} = useRouter();
+  const { reload } = useRouter();
 
   return (
     <Container {...props}>

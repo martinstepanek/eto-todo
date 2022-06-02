@@ -10,8 +10,9 @@ interface ListPickerArrowIconProps {
   disabled: boolean;
 }
 
-const ListPickerArrowIcon: FC<ListPickerArrowIconProps &
-  FontAwesomeIconProps> = ({ icon, ...props }) => {
+const ListPickerArrowIcon: FC<
+  ListPickerArrowIconProps & FontAwesomeIconProps
+> = ({ icon, ...props }) => {
   return <FontAwesomeIcon icon={icon} {...props} />;
 };
 

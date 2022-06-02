@@ -5,27 +5,29 @@ import { UserRepository } from '../repositories/UserRepository';
 import { UnauthorizedError } from 'type-graphql';
 import { UserIdentity } from '../models/types/user/UserIdentity';
 
-export const contextFactory = async ({ req }: ExpressContext): Promise<Context> => {
-    const accessToken = req.header('Access-Token');
+export const contextFactory = async ({
+  req,
+}: ExpressContext): Promise<Context> => {
+  const accessToken = req.header('Access-Token');
 
-    const userIdentity = new UserIdentity();
-    const context: Context = {
-        userIdentity,
-        req,
-    };
+  const userIdentity = new UserIdentity();
+  const context: Context = {
+    userIdentity,
+    req,
+  };
 
-    if (accessToken) {
-        const userRepository = TypeORM.getCustomRepository(UserRepository);
-        const user = await userRepository.findOne({
-            where: {
-                accessToken,
-            },
-        });
-        context.userIdentity.user = user;
-        if (!user) {
-            throw new UnauthorizedError();
-        }
+  if (accessToken) {
+    const userRepository = TypeORM.getCustomRepository(UserRepository);
+    const user = await userRepository.findOne({
+      where: {
+        accessToken,
+      },
+    });
+    context.userIdentity.user = user;
+    if (!user) {
+      throw new UnauthorizedError();
     }
+  }
 
-    return context;
+  return context;
 };

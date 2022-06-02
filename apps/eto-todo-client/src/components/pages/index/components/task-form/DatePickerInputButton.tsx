@@ -25,13 +25,12 @@ const DatePickerInputButton: FC<DatePickerInputButtonProps> = ({
 };
 
 export default styled(DatePickerInputButton)`
-
   margin-left: 5px;
-  
+
   button {
     margin-top: 10px;
     margin-left: 15px;
-    border: 1px solid ${colors.mutedText}
+    border: 1px solid ${colors.mutedText};
     border-radius: 5px;
     padding: 5px 20px;
   }

@@ -1,16 +1,18 @@
-import {ApolloClient, createHttpLink, InMemoryCache} from '@apollo/client';
-import {setContext} from "@apollo/client/link/context";
+import { ApolloClient, createHttpLink, InMemoryCache } from '@apollo/client';
+import { setContext } from '@apollo/client/link/context';
 
 const httpLink = createHttpLink({
   uri: process.env.NEXT_PUBLIC_API_URL,
 });
 
 const authLink = setContext((_, { headers }) => {
-  const token = localStorage.getItem('token');
+  const token =
+    typeof window !== 'undefined' ? localStorage.getItem('token') : null;
+  const accessTokenHeader = token ? { 'Access-Token': token } : {};
   return {
     headers: {
       ...headers,
-      'Access-Token': token ? token : 'qw362u46d5j23u5t8f8t1yproy4ociruq817xuh1y5ge',
+      ...accessTokenHeader,
     },
   };
 });

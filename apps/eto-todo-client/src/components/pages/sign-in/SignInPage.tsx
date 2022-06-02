@@ -3,7 +3,7 @@ import SignInSkeleton from './SignInSkeleton';
 
 const SignIn = lazy(() => import('./SignIn'));
 
-const SignInPage: FC = props => {
+const SignInPage: FC = (props) => {
   return (
     <Suspense fallback={<SignInSkeleton />}>
       <SignIn {...props} />

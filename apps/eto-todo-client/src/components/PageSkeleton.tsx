@@ -2,7 +2,7 @@ import React, { FC } from 'react';
 import styled from 'styled-components';
 import { Heading } from './base/Heading';
 
-const PageSkeleton: FC = props => {
+const PageSkeleton: FC = (props) => {
   return (
     <div {...props}>
       <div className="heading">

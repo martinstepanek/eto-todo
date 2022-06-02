@@ -10,65 +10,68 @@ import { FormHandle } from './components/task-form/TaskForm';
 import ListPicker from './components/task-list/ListPicker';
 import ClientOnly from 'src/components/ClientOnly';
 
-const Home: FC = props => {
-    const [isFormOpen, setIsFormOpen] = useState(false);
-    const formRef = useRef<FormHandle>(null);
-    const onFormVisibilityChange = value => {
-        setIsFormOpen(value);
-        if (formRef && formRef.current) {
-            if (value) {
-                formRef.current.open();
-            } else {
-                formRef.current.close();
-            }
-        }
-    };
+const Home: FC = (props) => {
+  const [isFormOpen, setIsFormOpen] = useState(false);
+  const formRef = useRef<FormHandle>(null);
+  const onFormVisibilityChange = (value) => {
+    setIsFormOpen(value);
+    if (formRef && formRef.current) {
+      if (value) {
+        formRef.current.open();
+      } else {
+        formRef.current.close();
+      }
+    }
+  };
 
-    const onPlusButtonClick = () => {
-        onFormVisibilityChange(true);
-    };
+  const onPlusButtonClick = () => {
+    onFormVisibilityChange(true);
+  };
 
-    const [isPickerOpen, setIsPickerOpen] = useState(false);
-    const [listType, setListType] = useState(TaskListType.Todo);
-    const onPickListType = (listType: TaskListType) => {
-        setListType(listType);
-        setIsPickerOpen(false);
-    };
+  const [isPickerOpen, setIsPickerOpen] = useState(false);
+  const [listType, setListType] = useState(TaskListType.Todo);
+  const onPickListType = (listType: TaskListType) => {
+    setListType(listType);
+    setIsPickerOpen(false);
+  };
 
-    return (
-        <div {...props}>
-            <div className="task-list">
-                <TaskListPage listType={listType} />
-            </div>
-            <PlusButton className="plus-button" onClick={onPlusButtonClick} />
-            <ClientOnly>
-            <div className="bottom-sheets">
-                <SwipeableBottomSheet
-                    open={isPickerOpen}
-                    scrollTopAtClose={true}
-                    onChange={value => setIsPickerOpen(value)}
-                    overflowHeight={64}
-                    shadowTip={false}
-                    swipeableViewsProps={{ slideClassName: 'swipeable-view' }}
-                >
-                    <ListPicker
-                        value={listType}
-                        onChange={onPickListType}
-                        isOpen={isPickerOpen}
-                    />
-                </SwipeableBottomSheet>
-                <SwipeableBottomSheet
-                    open={isFormOpen}
-                    scrollTopAtClose={true}
-                    onChange={onFormVisibilityChange}
-                    swipeableViewsProps={{ slideClassName: 'swipeable-view' }}
-                >
-                    <CreateTaskForm ref={formRef} onSubmit={() => setIsFormOpen(false)} />
-                </SwipeableBottomSheet>
-            </div>
-            </ClientOnly>
+  return (
+    <div {...props}>
+      <div className="task-list">
+        <TaskListPage listType={listType} />
+      </div>
+      <PlusButton className="plus-button" onClick={onPlusButtonClick} />
+      <ClientOnly>
+        <div className="bottom-sheets">
+          <SwipeableBottomSheet
+            open={isPickerOpen}
+            scrollTopAtClose={true}
+            onChange={(value) => setIsPickerOpen(value)}
+            overflowHeight={64}
+            shadowTip={false}
+            swipeableViewsProps={{ slideClassName: 'swipeable-view' }}
+          >
+            <ListPicker
+              value={listType}
+              onChange={onPickListType}
+              isOpen={isPickerOpen}
+            />
+          </SwipeableBottomSheet>
+          <SwipeableBottomSheet
+            open={isFormOpen}
+            scrollTopAtClose={true}
+            onChange={onFormVisibilityChange}
+            swipeableViewsProps={{ slideClassName: 'swipeable-view' }}
+          >
+            <CreateTaskForm
+              ref={formRef}
+              onSubmit={() => setIsFormOpen(false)}
+            />
+          </SwipeableBottomSheet>
         </div>
-    );
+      </ClientOnly>
+    </div>
+  );
 };
 export default styled(Home)`
   position: relative;

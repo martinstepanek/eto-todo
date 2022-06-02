@@ -32,7 +32,7 @@ const DatePickerStatic: FC<DatePickerStaticProps> = ({
         onDayClick={setDate}
         shortDayNames={['S', 'M', 'T', 'W', 'T', 'F', 'S']}
       />
-      <DatePickerInputButton icon={<IconRedo/>} onClick={setRecurrent}>
+      <DatePickerInputButton icon={<IconRedo />} onClick={setRecurrent}>
         Repeat
       </DatePickerInputButton>
     </div>
@@ -52,45 +52,49 @@ export default styled(DatePickerStatic)`
     .header {
       width: 245px;
       margin-bottom: 15px;
-      
+
       .month-year {
         display: flex;
         justify-content: center;
         align-items: center;
       }
-      
-      .next-month, .previous-month {
+
+      .next-month,
+      .previous-month {
         color: ${colors.text};
         display: flex;
         justify-content: center;
         align-items: center;
-        
+
         &:focus {
           outline: none;
         }
+
         &:hover {
           color: ${colors.text};
         }
       }
     }
-    
+
     thead {
-      color: ${colors.mutedText}
+      color: ${colors.mutedText};
     }
 
-    td, th {
+    td,
+    th {
       width: 35px;
       height: 35px;
       border-radius: 50%;
     }
-    
+
     .day {
       &.today {
-        color: ${colors.primary}
+        color: ${colors.primary};
       }
 
-      &.active, &:hover:not(.empty) {
-        color: ${colors.text}
+      &.active,
+      &:hover:not(.empty) {
+        color: ${colors.text};
         background-color: ${colors.primary};
       }
     }

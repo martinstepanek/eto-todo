@@ -13,7 +13,8 @@ const moduleExports = withTM({
   env: {
     NEXT_PUBLIC_SENTRY_DSN: '',
     NEXT_PUBLIC_API_URL: 'http://localhost:4000/graphql',
-    NEXT_PUBLIC_GOOGLE_CLIENT_ID: '579392587706-auul99bgh1nu7a00u4rv7sp6qdca2gbf.apps.googleusercontent.com'
+    NEXT_PUBLIC_GOOGLE_CLIENT_ID: '579392587706-auul99bgh1nu7a00u4rv7sp6qdca2gbf.apps.googleusercontent.com',
+    SESSION_PASSWORD: 'asdfasldkfjasdlůfjkasldkůfjasdjfůlkasdf',
   },
 });
 

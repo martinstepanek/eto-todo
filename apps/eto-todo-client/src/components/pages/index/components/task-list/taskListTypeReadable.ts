@@ -1,6 +1,6 @@
 import { TaskListType } from '../../types/TaskListType';
 
-export default {
+const taskListTypeReadable = {
   [TaskListType.Today]: 'Today',
   [TaskListType.Todo]: 'Todo',
   [TaskListType.Tomorrow]: 'Tomorrow',
@@ -9,3 +9,5 @@ export default {
   [TaskListType.ThisMonth]: 'This Month',
   [TaskListType.NextMonth]: 'Next Month',
 };
+
+export default taskListTypeReadable;

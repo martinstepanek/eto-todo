@@ -4,7 +4,7 @@ import TaskItem from './TaskItem';
 import { IconAlignJustify } from '../../../../icons/IconAlignJustify';
 import { DetailBlock } from './DetailBlock';
 import { IconRedo } from '../../../../icons/IconRedo';
-import {TaskContentFragmentType} from "../../../../../types/graphql";
+import { TaskContentFragmentType } from '../../../../../types/graphql';
 
 interface TaskItemWithDetailProps {
   task: TaskContentFragmentType;

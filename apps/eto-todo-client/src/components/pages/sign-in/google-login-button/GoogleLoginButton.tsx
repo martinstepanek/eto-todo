@@ -1,21 +1,42 @@
-import React, { FC } from 'react';
+import React, { FC, useCallback } from 'react';
 import {
   GoogleLoginResponse,
   GoogleLoginResponseOffline,
   useGoogleLogin,
 } from 'react-google-login';
-import { useMutation } from '@apollo/client';
-import LOGIN from '../login';
 import { RippleButton } from '../../../base/form/buttons/RippleButton';
 import GoogleLoginButtonSkeleton from './GoogleLoginButtonSkeleton';
 import Cookies from 'js-cookie';
+import useBooleanState from '../../../../hooks/useBooleanState';
 
 interface GoogleLoginButtonProps {
   onLogin: (accessToken: string) => void;
 }
 
 const GoogleLoginButton: FC<GoogleLoginButtonProps> = ({ onLogin }) => {
-  const [login, { loading }] = useMutation(LOGIN);
+  const [loading, enableLoading, disableLoading] = useBooleanState(false);
+
+  const login = useCallback(
+    async (tokenId: string) => {
+      enableLoading();
+      try {
+        const response = await fetch('/api/login', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ tokenId: tokenId + 'adsf' }),
+        });
+        const data = await response.json();
+        onLogin(data.accessToken);
+      } catch (e) {
+        console.log(e);
+      } finally {
+        disableLoading();
+      }
+    },
+    [onLogin, enableLoading, disableLoading]
+  );
 
   const setCookie = () => Cookies.set('socials', 'google', { expires: 5 * 60 });
   const clearCookie = () => Cookies.remove('socials');
@@ -27,10 +48,7 @@ const GoogleLoginButton: FC<GoogleLoginButtonProps> = ({ onLogin }) => {
   ) => {
     clearCookie();
     if ('tokenId' in response) {
-      const { data } = await login({
-        variables: { tokenId: response.tokenId },
-      });
-      onLogin(data.login.accessToken);
+      login(response.tokenId);
     }
   };
   const onFailure = (response: any) => {

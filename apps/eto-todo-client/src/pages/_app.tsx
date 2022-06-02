@@ -8,12 +8,12 @@ import { apolloClient } from '../apolloClient';
 const MyApp: FC<AppProps> = ({ Component, pageProps }) => (
   <>
     <ThemeProvider theme={{}}>
-    <GlobalStyle />
-    <ApolloProvider client={apolloClient}>
-      <Component {...pageProps} />
-    </ApolloProvider>
-  </ThemeProvider>
-      <div id="modal-root"/>
+      <GlobalStyle />
+      <ApolloProvider client={apolloClient}>
+        <Component {...pageProps} />
+      </ApolloProvider>
+    </ThemeProvider>
+    <div id="modal-root" />
   </>
 );
 export default MyApp;

@@ -17,7 +17,7 @@ const Modal: FC<ModalProps> = ({ children, isOpen, ...props }) => {
     return () => {
       modalRoot && modalRoot.removeChild(element);
     };
-  }, []);
+  }, [element, modalRoot]);
 
   return ReactDOM.createPortal(
     <div {...props}>
@@ -28,7 +28,7 @@ const Modal: FC<ModalProps> = ({ children, isOpen, ...props }) => {
 };
 
 export default styled(Modal)`
-  display: ${({ isOpen }) => (isOpen ? `block` : `none`)}
+  display: ${({ isOpen }) => (isOpen ? `block` : `none`)};
   position: fixed;
   z-index: 1;
   padding-top: 100px;
@@ -37,12 +37,9 @@ export default styled(Modal)`
   width: 100%;
   height: 100%;
   overflow: auto;
-  background-color: rgb(0, 0, 0);
-  background-color: rgba(0, 0, 0, 0.6);
+  background-color: rgb(0 0 0 / 60%);
 
   .content {
-    -webkit-animation-name: zoom;
-    -webkit-animation-duration: 0.6s;
     animation-name: zoom;
     animation-duration: 0.6s;
     margin: auto;
@@ -55,12 +52,13 @@ export default styled(Modal)`
     padding: 30px 15px;
   }
 
-  @-webkit-keyframes zoom {
+  @keyframes zoom {
     from {
-      -webkit-transform: scale(0);
+      transform: scale(0);
     }
+
     to {
-      -webkit-transform: scale(1);
+      transform: scale(1);
     }
   }
 
@@ -68,6 +66,7 @@ export default styled(Modal)`
     from {
       transform: scale(0);
     }
+
     to {
       transform: scale(1);
     }

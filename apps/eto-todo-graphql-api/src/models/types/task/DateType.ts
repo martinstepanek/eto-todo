@@ -1,5 +1,5 @@
 export enum DateType {
-    Date,
-    Week,
-    Month,
+  Date,
+  Week,
+  Month,
 }

@@ -1,18 +1,11 @@
-import React, {FC, useEffect, useMemo} from 'react';
-import { useQuery } from '@apollo/client';
-import { Redirect, useHistory } from 'react-router';
-import ME from '../../me';
+import React, { FC, useMemo } from 'react';
 import GoogleLoginButton from './google-login-button/GoogleLoginButton';
 import ReactTypingEffect from 'react-typing-effect';
 import shuffle from 'lodash/shuffle';
 import SignInLayout from './SignInLayout';
 import { useRouter } from 'next/router';
 
-const SignIn: FC = props => {
-  const history = useHistory();
-  const meQuery = useQuery(ME);
-  const isAuthenticated = Boolean(meQuery.data && meQuery.data.me);
-
+const SignIn: FC = (props) => {
   const typedText = useMemo(
     () =>
       shuffle([
@@ -26,15 +19,9 @@ const SignIn: FC = props => {
   );
 
   const router = useRouter();
-  useEffect(() => {
-      if(isAuthenticated) {
-          router.push('/');
-      }
-  }, [isAuthenticated, router]);
-
   const login = (accessToken: string) => {
     localStorage.setItem('token', accessToken);
-    history.push('/');
+    router.push('/');
   };
 
   return (

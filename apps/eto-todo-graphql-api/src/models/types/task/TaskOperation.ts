@@ -5,12 +5,12 @@ import { Task } from './Task';
 
 @ObjectType()
 export class TaskOperation {
-    @Field(() => TaskOperationType)
-    public operationType: TaskOperationType;
+  @Field(() => TaskOperationType)
+  public operationType: TaskOperationType;
 
-    @Field(() => Task)
-    public task: Task;
+  @Field(() => Task)
+  public task: Task;
 
-    @Field(() => [TaskListType])
-    public inLists: TaskListType[];
+  @Field(() => [TaskListType])
+  public inLists: TaskListType[];
 }

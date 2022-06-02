@@ -34,6 +34,7 @@ interface TaskFormProps {
   initialValues: TaskFormValues;
 }
 
+// eslint-disable-next-line react/display-name
 const TaskForm = forwardRef<FormHandle, TaskFormProps>(
   ({ onSubmit, initialValues, ...props }, ref) => {
     const nameFieldRef = useRef<HTMLInputElement>(null);
@@ -68,7 +69,7 @@ const TaskForm = forwardRef<FormHandle, TaskFormProps>(
       setIsDetailVisible(false);
     };
 
-    const onNameFieldChange = value => {
+    const onNameFieldChange = (value) => {
       if (value.length > 0) {
         setIsSaveButtonDisabled(false);
       } else {
@@ -85,10 +86,8 @@ const TaskForm = forwardRef<FormHandle, TaskFormProps>(
 
     return (
       <Formik initialValues={initialValues} onSubmit={onFormSubmit}>
-        {formikProps => {
-          useEffect(() => onNameFieldChange(formikProps.values.name), [
-            formikProps.values.name,
-          ]);
+        {(formikProps) => {
+          onNameFieldChange(formikProps.values.name);
           const onDatePickerSubmit = (values: TaskFormValues) => {
             formikProps.values = values;
           };

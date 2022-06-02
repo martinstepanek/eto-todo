@@ -1,5 +1,4 @@
 import React, { FC } from 'react';
-import styled from 'styled-components';
 import { TaskFormValues } from './TaskForm';
 import 'react-daypicker/lib/DayPicker.css';
 import DatePickerInputButton from './DatePickerInputButton';
@@ -25,11 +24,14 @@ const DatePickerRecurrent: FC<DatePickerRecurrentProps> = ({
 
   return (
     <div {...props}>
-      <DatePickerInputButton icon={<IconCalendarCheck />} onClick={setNotRecurrent}>
+      <DatePickerInputButton
+        icon={<IconCalendarCheck />}
+        onClick={setNotRecurrent}
+      >
         Static
       </DatePickerInputButton>
     </div>
   );
 };
 
-export default styled(DatePickerRecurrent)``;
+export default DatePickerRecurrent;

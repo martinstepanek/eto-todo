@@ -4,15 +4,15 @@ import { DateType } from '../models/types/task/DateType';
 import { TaskOperationType } from '../models/types/task/TaskOperationType';
 
 export const registerEnumsToSchema = () => {
-    registerEnumType(TaskListType, {
-        name: 'TaskListType',
-    });
+  registerEnumType(TaskListType, {
+    name: 'TaskListType',
+  });
 
-    registerEnumType(DateType, {
-        name: 'DateType',
-    });
+  registerEnumType(DateType, {
+    name: 'DateType',
+  });
 
-    registerEnumType(TaskOperationType, {
-        name: 'TaskOperationType',
-    });
+  registerEnumType(TaskOperationType, {
+    name: 'TaskOperationType',
+  });
 };

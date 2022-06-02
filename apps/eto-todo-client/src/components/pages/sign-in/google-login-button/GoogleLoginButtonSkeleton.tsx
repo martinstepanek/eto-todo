@@ -2,7 +2,7 @@ import React, { FC } from 'react';
 import styled from 'styled-components';
 import { SkeletonBlock } from '../../../base/SkeletonBlock';
 
-const GoogleLoginButtonSkeleton: FC = props => {
+const GoogleLoginButtonSkeleton: FC = (props) => {
   return <SkeletonBlock {...props} />;
 };
 

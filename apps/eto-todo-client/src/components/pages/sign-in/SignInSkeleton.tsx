@@ -4,7 +4,7 @@ import SignInLayout from './SignInLayout';
 import { SkeletonBlock } from '../../base/SkeletonBlock';
 import GoogleLoginButtonSkeleton from './google-login-button/GoogleLoginButtonSkeleton';
 
-const SignInSkeleton: FC = props => {
+const SignInSkeleton: FC = (props) => {
   return (
     <SignInLayout
       {...props}

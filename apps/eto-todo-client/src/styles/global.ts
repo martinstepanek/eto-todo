@@ -2,8 +2,8 @@ import { createGlobalStyle } from 'styled-components';
 import colors from './colors';
 
 export const styleVariables = {
-    fontFamily: `'Roboto', sans-serif`,
-    fontSize: `18px`,
+  fontFamily: `'Roboto', sans-serif`,
+  fontSize: `18px`,
 };
 
 const GlobalStyle = createGlobalStyle`
@@ -26,7 +26,7 @@ const GlobalStyle = createGlobalStyle`
     box-sizing: border-box;
   }
 
-  @keyframes placeHolderShimmer {
+  @keyframes placeholder-shimmer {
     0% {
       background-position: -468px 0;
     }
