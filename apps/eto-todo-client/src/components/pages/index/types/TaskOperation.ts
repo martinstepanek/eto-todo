@@ -1,9 +1,9 @@
-import { Task } from './Task';
 import { TaskListType } from './TaskListType';
 import { TaskOperationType } from './TaskOperationType';
+import { TaskContentFragmentType } from '../../../../types/graphql';
 
 export interface TaskOperation {
   operationType: TaskOperationType;
-  task: Task;
+  task: TaskContentFragmentType;
   inLists: TaskListType[];
 }

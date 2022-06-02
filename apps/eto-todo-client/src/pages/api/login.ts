@@ -29,6 +29,7 @@ const handler: NextApiHandler = async function loginRoute(req, res) {
 
     const accessToken = loginResponse.data.login.accessToken;
 
+    // @ts-ignore
     req.session.user = {
       accessToken,
     };

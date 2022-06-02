@@ -1,14 +1,14 @@
 import React, { FC } from 'react';
-import { Task } from '../../types/Task';
 import CheckBoxOption from '../../../../base/form/CheckBoxOption';
 import { useMutation } from '@apollo/client';
 import { taskLocalOperation } from '../../operations/taskLocalOperation';
 import MARK_TASK_AS_DONE from '../../operations/markTaskAsDone';
 import { TaskEntryInput } from '../../types/TaskEntryInput';
 import MARK_TASK_AS_NOT_DONE from '../../operations/markTaskAsNotDone';
+import { TaskContentFragmentType } from '../../../../../types/graphql';
 
 interface TaskItemProps {
-  task: Task;
+  task: TaskContentFragmentType;
 }
 
 const TaskItem: FC<TaskItemProps> = ({ task, ...props }) => {

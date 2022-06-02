@@ -28,8 +28,8 @@ const TaskListPage: FC<TaskListPageProps> = ({ listType }) => {
     GetTasksQueryType,
     GetTasksQueryVariablesType
   >(GET_TASKS, {
-    // @ts-ignore
     variables: {
+      // @ts-ignore
       listType: listType === TaskListType.Todo ? TaskListType.Today : listType,
     },
   });

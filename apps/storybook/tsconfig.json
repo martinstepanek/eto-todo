@@ -6,7 +6,7 @@
     "module": "CommonJS",
     "baseUrl": ".",
     "paths": {
-      "@eto-todo-client-public/*": ["../eto-todo-client/public/*"],
+      "@eto-todo-client-public/*": ["../eto-todo-client/public/*"]
     }
   }
 }

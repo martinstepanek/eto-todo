@@ -15,6 +15,10 @@ const config: StorybookConfig = {
       files: '{,!(node_modules)/**/}*.stories.@(js|jsx|ts|tsx)',
     },
   ],
+  core: {
+    builder: 'webpack4',
+    disableTelemetry: true,
+  },
   addons: [
     '@storybook/addon-links',
     '@storybook/addon-essentials',

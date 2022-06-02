@@ -4,6 +4,7 @@ import { GetServerSideProps } from 'next';
 import { ironSessionConfig } from '../ironSessionConfig';
 
 const handler: GetServerSideProps = async ({ req }) => {
+  // @ts-ignore
   const user = req.session.user;
 
   if (user) {

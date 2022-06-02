@@ -3,7 +3,7 @@ import { TaskOperation } from '../types/TaskOperation';
 import { TaskOperationType } from '../types/TaskOperationType';
 import GET_TASKS from './getTasks';
 import { TaskListType } from '../types/TaskListType';
-import { Task } from '../types/Task';
+import { TaskContentFragmentType } from '../../../../types/graphql';
 
 const addTask = (cache: ApolloCache<unknown>, taskOperation: TaskOperation) => {
   const query = GET_TASKS;
@@ -42,7 +42,8 @@ const markAsDoneOrNotDone = (
     });
 
     const localTaskIndex = data.tasks.findIndex(
-      (task: Task) => task.taskId === taskOperation.task.taskId
+      (task: TaskContentFragmentType) =>
+        task.taskId === taskOperation.task.taskId
     );
 
     if (localTaskIndex !== -1) {

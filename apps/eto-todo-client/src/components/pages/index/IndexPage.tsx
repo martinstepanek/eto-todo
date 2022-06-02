@@ -8,7 +8,7 @@ import colors from '../../../styles/colors';
 import CreateTaskForm from './components/create-task-form/CreateTaskForm';
 import { FormHandle } from './components/task-form/TaskForm';
 import ListPicker from './components/task-list/ListPicker';
-import ClientOnly from 'src/components/ClientOnly';
+import ClientOnly from './../../../components/ClientOnly';
 
 const Home: FC = (props) => {
   const [isFormOpen, setIsFormOpen] = useState(false);
