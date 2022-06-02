@@ -1,0 +1,9 @@
+schema: schema.graphql
+documents: ./src/**/*.*
+generates:
+  ./src/types/graphql.ts:
+    plugins:
+      - typescript
+      - typescript-operations
+    config:
+      typesSuffix: Type

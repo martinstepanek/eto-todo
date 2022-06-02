@@ -1,0 +1,6 @@
+.next/
+build/
+.turbo/
+.idea/
+.git/
+node_modules/

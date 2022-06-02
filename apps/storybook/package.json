@@ -1,0 +1,39 @@
+{
+  "name": "storybook",
+  "version": "0.0.0",
+  "private": true,
+  "author": {
+    "name": "Martin Štěpánek",
+    "email": "stepanekwork@gmail.com",
+    "url": "https://stepanek.dev"
+  },
+  "license": "ISC",
+  "scripts": {
+    "start": "npx http-server storybook-static",
+    "dev": "start-storybook",
+    "build": "build-storybook"
+  },
+  "dependencies": {
+    "ui": "*",
+    "web": "*",
+    "@storybook/addon-actions": "^6.4.20",
+    "@storybook/addon-essentials": "^6.4.20",
+    "@storybook/addon-links": "^6.4.20",
+    "@storybook/react": "^6.4.20",
+    "@storybook/addon-a11y": "^6.4.20",
+    "storybook-include": "^1.1.1",
+    "storybook-addon-swc": "^1.1.5",
+    "storybook-addon-next-router": "^3.1.1",
+    "storybook-addon-apollo-client": "^4.0.11"
+  },
+  "devDependencies": {
+    "config": "*",
+    "eslint": "7.32.0",
+    "tsconfig": "*",
+    "@types/node": "^17.0.12",
+    "@types/react": "17.0.37",
+    "http-server": "^14.1.0",
+    "typescript": "^4.5.3",
+    "chromatic": "^6.5.3"
+  }
+}

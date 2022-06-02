@@ -1,0 +1,30 @@
+version: '3.4'
+services:
+  eto-todo-graphql-api:
+    build:
+      context: ../../
+      dockerfile: ./apps/eto-todo-graphql-api/Dockerfile
+      target: development
+    ports:
+      - "4000:4000"
+    volumes:
+      - ./src:/app/src:cached
+      - ./logs:/app/logs
+    env_file:
+      - .env
+  mysql:
+    image: mysql:8.0
+    restart: unless-stopped
+    command: --default-authentication-plugin=mysql_native_password
+    volumes:
+      - mysql:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+  pma:
+    image: phpmyadmin/phpmyadmin
+    environment:
+      PMA_ARBITRARY: 1
+    ports:
+      - "8080:80"
+volumes:
+  mysql: ~

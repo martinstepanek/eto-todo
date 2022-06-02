@@ -1,0 +1,35 @@
+version: "3.4"
+services:
+  eto-todo-client:
+    build:
+      args:
+        APP: eto-todo-client
+    ports:
+      - "3000:3000"
+  eto-todo-graphql-api:
+    build:
+      dockerfile: apps/eto-todo-graphql-api/Dockerfile
+    ports:
+      - "3000:3000"
+  storybook:
+    build:
+      args:
+        APP: storybook
+    ports:
+      - "3001:3000"
+  mysql:
+    image: mysql:8.0
+    restart: unless-stopped
+    command: --default-authentication-plugin=mysql_native_password
+    volumes:
+      - mysql:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+  pma:
+    image: phpmyadmin/phpmyadmin
+    environment:
+      PMA_ARBITRARY: 1
+    ports:
+      - "8080:80"
+volumes:
+  mysql: ~
