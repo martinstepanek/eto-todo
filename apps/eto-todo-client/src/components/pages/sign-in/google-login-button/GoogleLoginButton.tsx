@@ -25,7 +25,7 @@ const GoogleLoginButton: FC<GoogleLoginButtonProps> = ({ onLogin }) => {
           headers: {
             'Content-Type': 'application/json',
           },
-          body: JSON.stringify({ tokenId: tokenId + 'adsf' }),
+          body: JSON.stringify({ tokenId }),
         });
         const data = await response.json();
         onLogin(data.accessToken);
