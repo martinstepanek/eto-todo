@@ -34,7 +34,7 @@
     "@fortawesome/react-fontawesome": "^0.1.18",
     "js-cookie": "^2.2.1",
     "react-swipeable-bottom-sheet": "^1.1.2",
-    "react-swipeable-views": "^0.13.9",
+    "react-swipeable-views": "^0.14.0",
     "react-typing-effect": "^2.0.3",
 
     "formik": "^2.1.7",
