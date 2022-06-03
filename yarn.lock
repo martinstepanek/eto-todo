@@ -13764,6 +13764,11 @@ react-helmet-async@^1.0.7:
     react-fast-compare "^3.2.0"
     shallowequal "^1.1.0"
 
+react-hook-form@^7.31.3:
+  version "7.31.3"
+  resolved "https://registry.yarnpkg.com/react-hook-form/-/react-hook-form-7.31.3.tgz#b61bafb9a7435f91695351a7a9f714d8c4df0121"
+  integrity sha512-NVZdCWViIWXXXlQ3jxVQH0NuNfwPf8A/0KvuCxrM9qxtP1qYosfR2ZudarziFrVOC7eTUbWbm1T4OyYCwv9oSQ==
+
 react-inspector@^5.1.0:
   version "5.1.1"
   resolved "https://registry.npmjs.org/react-inspector/-/react-inspector-5.1.1.tgz"
@@ -14537,11 +14542,6 @@ sane@^4.0.3:
     micromatch "^3.1.4"
     minimist "^1.1.1"
     walker "~1.0.5"
-
-sanitize.css@^8.0.0:
-  version "8.0.1"
-  resolved "https://registry.yarnpkg.com/sanitize.css/-/sanitize.css-8.0.1.tgz#bd38f9752b0972849d2de260daeaa99878fd349e"
-  integrity sha512-5Gsh+BmqyhixJIh68mpP1NkiiKNTeQi9WPQvdVPxfcFIkiuXKcDkKHhYekxheK45KI52bIUC/FXK8R5HGOza5Q==
 
 sax@>=0.6.0:
   version "1.2.4"

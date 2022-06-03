@@ -6,11 +6,11 @@ import PlusButton from '../../../components/base/form/buttons/PlusButton';
 import SwipeableBottomSheet from 'react-swipeable-bottom-sheet';
 import colors from '../../../styles/colors';
 import CreateTaskForm from './components/create-task-form/CreateTaskForm';
-import { FormHandle } from './components/task-form/TaskForm';
+import { FormHandle } from './components/task-form-old/TaskForm';
 import ListPicker from './components/task-list/ListPicker';
 import ClientOnly from './../../../components/ClientOnly';
 
-const Home: FC = (props) => {
+const IndexPage: FC = (props) => {
   const [isFormOpen, setIsFormOpen] = useState(false);
   const formRef = useRef<FormHandle>(null);
   const onFormVisibilityChange = (value) => {
@@ -73,7 +73,7 @@ const Home: FC = (props) => {
     </div>
   );
 };
-export default styled(Home)`
+export default styled(IndexPage)`
   position: relative;
   overflow: auto;
   height: 100%;
