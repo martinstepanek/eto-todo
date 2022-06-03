@@ -94,7 +94,7 @@ export default styled(ListPicker)`
     font-weight: bold;
     font-size: 1.2em;
     height: 64px;
-    padding: 15px;
+    padding: 0 15px;
   }
 
   .swipeable-options {
