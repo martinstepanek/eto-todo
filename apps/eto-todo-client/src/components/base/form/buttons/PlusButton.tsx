@@ -9,7 +9,7 @@ const PlusButton: FC<React.ButtonHTMLAttributes<HTMLButtonElement>> = (
 ) => {
   return (
     <Button {...props}>
-      <FontAwesomeIcon icon={faPlus} />
+      <FontAwesomeIcon icon={faPlus} className="icon" />
     </Button>
   );
 };
@@ -18,4 +18,8 @@ export default styled(PlusButton)`
   border-radius: 50%;
   width: 60px;
   height: 60px;
+
+  .icon {
+    font-size: 22px;
+  }
 `;
