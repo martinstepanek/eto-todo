@@ -55,6 +55,7 @@ const TaskForm = forwardRef<FormHandle, TaskFormProps>(
       setIsDetailVisible(false);
       onSubmit(values);
       reset();
+      disableSaveButton();
     };
 
     const [
