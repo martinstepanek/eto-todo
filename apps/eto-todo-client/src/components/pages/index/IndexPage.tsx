@@ -64,8 +64,8 @@ const IndexPage: FC = (props) => {
             swipeableViewsProps={{ slideClassName: 'swipeable-view' }}
           >
             <CreateTaskForm
-              ref={formRef}
               onSubmit={() => setIsFormOpen(false)}
+              ref={formRef}
             />
           </SwipeableBottomSheet>
         </div>

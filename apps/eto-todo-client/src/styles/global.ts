@@ -23,8 +23,11 @@ const GlobalStyle = createGlobalStyle`
     font-size: ${styleVariables.fontSize};
     padding: 0;
     margin: 0;
-    box-sizing: border-box;
   }
+  
+   * {
+     box-sizing: border-box;
+   }
 
   @keyframes placeholder-shimmer {
     0% {

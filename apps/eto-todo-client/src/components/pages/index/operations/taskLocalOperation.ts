@@ -1,14 +1,19 @@
 import { ApolloCache } from '@apollo/client';
-import { TaskOperation } from '../types/TaskOperation';
-import { TaskOperationType } from '../types/TaskOperationType';
 import GET_TASKS from './getTasks';
-import { TaskListType } from '../types/TaskListType';
-import { TaskContentFragmentType } from '../../../../types/graphql';
+import {
+  TaskContentFragmentType,
+  TaskListTypeType,
+  TaskOperationContentFragmentType,
+  TaskOperationTypeType,
+} from '../../../../types/graphql';
 
-const addTask = (cache: ApolloCache<unknown>, taskOperation: TaskOperation) => {
+const addTask = (
+  cache: ApolloCache<unknown>,
+  taskOperation: TaskOperationContentFragmentType
+) => {
   const query = GET_TASKS;
 
-  taskOperation.inLists.map((listType: TaskListType) => {
+  taskOperation.inLists.map((listType: TaskListTypeType) => {
     const variables = { listType };
 
     const data: any = cache.readQuery({
@@ -29,11 +34,11 @@ const addTask = (cache: ApolloCache<unknown>, taskOperation: TaskOperation) => {
 
 const markAsDoneOrNotDone = (
   cache: ApolloCache<unknown>,
-  taskOperation: TaskOperation
+  taskOperation: TaskOperationContentFragmentType
 ) => {
   const query = GET_TASKS;
 
-  taskOperation.inLists.map((listType: TaskListType) => {
+  taskOperation.inLists.map((listType: TaskListTypeType) => {
     const variables = { listType };
 
     const data: any = cache.readQuery({
@@ -65,16 +70,16 @@ const markAsDoneOrNotDone = (
 
 export const taskLocalOperation = (
   cache: ApolloCache<unknown>,
-  taskOperation: TaskOperation
+  taskOperation: TaskOperationContentFragmentType
 ) => {
   switch (taskOperation.operationType) {
-    case TaskOperationType.Create:
+    case TaskOperationTypeType.CreateType:
       addTask(cache, taskOperation);
       break;
-    case TaskOperationType.MarkAsDone:
+    case TaskOperationTypeType.MarkAsDoneType:
       markAsDoneOrNotDone(cache, taskOperation);
       break;
-    case TaskOperationType.MarkAsNotDone:
+    case TaskOperationTypeType.MarkAsNotDoneType:
       markAsDoneOrNotDone(cache, taskOperation);
       break;
     default:
