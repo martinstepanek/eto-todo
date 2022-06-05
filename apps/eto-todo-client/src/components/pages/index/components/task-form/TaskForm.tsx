@@ -1,4 +1,9 @@
-import React, { forwardRef, useImperativeHandle, useState } from 'react';
+import React, {
+  forwardRef,
+  useCallback,
+  useImperativeHandle,
+  useState,
+} from 'react';
 import { useForm } from 'react-hook-form';
 import { Input } from '../../../../base/form/Input';
 import TaskFormOptionsMenu from './TaskFormOptionsMenu';
@@ -7,6 +12,7 @@ import styled from 'styled-components';
 import colors from '../../../../../styles/colors';
 import { DetailTextArea } from './DetailTextArea';
 import { TaskInputType } from '../../../../../types/graphql';
+import DatePickerModal from '../task-form/DatePickerModal';
 
 export interface FormHandle {
   open: () => void;
@@ -21,7 +27,7 @@ interface TaskFormProps {
 // eslint-disable-next-line react/display-name
 const TaskForm = forwardRef<FormHandle, TaskFormProps>(
   ({ onSubmit, initialValues, ...props }, ref) => {
-    const { register, handleSubmit, setFocus, watch, reset } =
+    const { register, handleSubmit, setFocus, watch, reset, getValues } =
       useForm<TaskInputType>();
 
     const [isDetailVisible, setIsDetailVisible] = useState(false);
@@ -58,11 +64,14 @@ const TaskForm = forwardRef<FormHandle, TaskFormProps>(
       disableSaveButton();
     };
 
-    const [
-      isDatePickerModalOpen,
-      openDatePickerModalOpen,
-      closeDatePickerModalOpen,
-    ] = useBooleanState(false);
+    const [isDatePickerModalOpen, openDatePickerModal, closeDatePickerModal] =
+      useBooleanState(false);
+    const onDatePickerSubmit = useCallback(
+      (values: TaskInputType) => {
+        reset(values);
+      },
+      [reset]
+    );
 
     return (
       <form onSubmit={handleSubmit(onFormSubmit)} {...props}>
@@ -81,10 +90,16 @@ const TaskForm = forwardRef<FormHandle, TaskFormProps>(
         />
         <TaskFormOptionsMenu
           onDetailClick={showDetailInput}
-          onCalendarClick={openDatePickerModalOpen}
+          onCalendarClick={openDatePickerModal}
           saveButtonProps={{
             disabled: !isSaveButtonEnabled,
           }}
+        />
+        <DatePickerModal
+          isOpen={isDatePickerModalOpen}
+          onSubmit={onDatePickerSubmit}
+          onClose={closeDatePickerModal}
+          values={getValues()}
         />
       </form>
     );

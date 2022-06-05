@@ -38,13 +38,10 @@ const CreateTaskForm = forwardRef<FormHandle, CreateTaskFormProps>(
 
     const onTaskFormSubmit = async (values: TaskInputType) => {
       onSubmit();
-      // TODO: remove mocked `specificDateType` and `specificDateValue`
       await createTask({
         variables: {
           task: {
             ...values,
-            specificDateType: DateTypeType.DateType,
-            specificDateValue: new Date(),
           },
         },
       });
