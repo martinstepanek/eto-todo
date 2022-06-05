@@ -1,6 +1,8 @@
 import { ApolloCache } from '@apollo/client';
 import GET_TASKS from './getTasks';
 import {
+  GetTasksQueryType,
+  GetTasksQueryVariablesType,
   TaskContentFragmentType,
   TaskListTypeType,
   TaskOperationContentFragmentType,
@@ -16,18 +18,22 @@ const addTask = (
   taskOperation.inLists.map((listType: TaskListTypeType) => {
     const variables = { listType };
 
-    const data: any = cache.readQuery({
-      query,
-      variables,
-    });
+    const data = cache.readQuery<GetTasksQueryType, GetTasksQueryVariablesType>(
+      {
+        query,
+        variables,
+      }
+    );
+    if (data) {
+      cache.writeQuery({
+        query,
+        variables,
+        data: {
+          tasks: [...data.tasks, taskOperation.task],
+        },
+      });
+    }
 
-    cache.writeQuery({
-      query,
-      variables,
-      data: {
-        tasks: [...data.tasks, taskOperation.task],
-      },
-    });
     return true;
   });
 };
