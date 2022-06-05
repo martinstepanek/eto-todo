@@ -30,7 +30,7 @@ const Modal: FC<ModalProps> = ({ children, isOpen, ...props }) => {
 export default styled(Modal)`
   display: ${({ isOpen }) => (isOpen ? `block` : `none`)};
   position: fixed;
-  z-index: 1;
+  z-index: 10;
   padding-top: 100px;
   left: 0;
   top: 0;
