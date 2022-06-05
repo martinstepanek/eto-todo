@@ -37,8 +37,6 @@
     "react-swipeable-views": "^0.14.0",
     "react-typing-effect": "^2.0.3",
 
-    "formik": "^2.1.7",
-
     "lodash": "^4.17.20",
     "lodash.throttle": "^4.1.1",
     "react-daypicker": "^3.0.10",
