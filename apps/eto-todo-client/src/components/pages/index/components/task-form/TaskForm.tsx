@@ -59,7 +59,10 @@ const TaskForm = forwardRef<FormHandle, TaskFormProps>(
 
     const onFormSubmit = (values: TaskInputType) => {
       setIsDetailVisible(false);
-      onSubmit(values);
+      onSubmit({
+          ...initialValues,
+          ...values,
+      });
       reset(initialValues);
       disableSaveButton();
     };
