@@ -4,6 +4,7 @@ import colors from '../../../../../styles/colors';
 import { IconAlignJustify } from '../../../../icons/IconAlignJustify';
 import { IconCalendarCheck } from '../../../../icons/IconCalendarCheck';
 import BasicButton from '../../../../base/form/buttons/BasicButton';
+import { medias } from '../../../../../styles/breakpoints';
 
 interface TaskFormOptionsMenuProps {
   onDetailClick: () => void;
@@ -37,6 +38,12 @@ export default styled(TaskFormOptionsMenu)`
   .icon {
     margin-right: 30px;
     font-size: 22px;
+
+    ${medias.sm} {
+      font-size: 25px;
+      padding: 5px 10px;
+      margin-right: 20px;
+    }
   }
 
   ${BasicButton} {

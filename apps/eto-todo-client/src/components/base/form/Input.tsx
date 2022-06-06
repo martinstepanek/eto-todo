@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import colors from '../../../styles/colors';
 import { styleVariables } from '../../../styles/global';
+import { medias } from '../../../styles/breakpoints';
 
 const Input = styled.input`
   font-family: ${styleVariables.fontFamily};
@@ -18,6 +19,10 @@ const Input = styled.input`
 
   &::placeholder {
     color: ${colors.mutedText};
+  }
+
+  ${medias.sm} {
+    font-size: ${styleVariables.fontSizeLg};
   }
 `;
 

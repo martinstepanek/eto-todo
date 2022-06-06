@@ -9,11 +9,13 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 import ListPickerArrowIcon from './ListPickerArrowIcon';
 import SwipeableViews from 'react-swipeable-views';
+import { medias } from '../../../../../styles/breakpoints';
 
 interface ListPickerProps {
   value: TaskListType;
   onChange: (value: TaskListType) => void;
   isOpen: boolean;
+  height: number;
 }
 
 const ListPicker: FC<ListPickerProps> = ({
@@ -93,7 +95,7 @@ export default styled(ListPicker)`
     align-items: center;
     font-weight: bold;
     font-size: 1.2em;
-    height: 64px;
+    height: ${({ height }) => height}px;
     padding: 0 15px;
   }
 
@@ -112,26 +114,39 @@ export default styled(ListPicker)`
   .arrow-right {
     position: absolute;
     transition: 0.3s;
-    top: 21px;
+    top: ${({ height }) => height / 2 - 15}px; // height is 18px, padding is 6px
+    padding: 6px 10px;
   }
 
   .arrow-left {
     left: 15px;
+
+    ${medias.sm} {
+      left: 30px;
+    }
   }
 
   .arrow-left-hidden {
-    left: -20px;
+    left: -40px;
   }
 
   .arrow-right {
     right: 15px;
+
+    ${medias.sm} {
+      right: 30px;
+    }
   }
 
   .arrow-right-hidden {
-    right: -20px;
+    right: -40px;
   }
 
   .option {
     padding: 15px;
+
+    ${medias.sm} {
+      padding: 20px 15px;
+    }
   }
 `;

@@ -4,6 +4,7 @@ import colors from './colors';
 export const styleVariables = {
   fontFamily: `'Roboto', sans-serif`,
   fontSize: `18px`,
+  fontSizeLg: '22px',
 };
 
 const GlobalStyle = createGlobalStyle`

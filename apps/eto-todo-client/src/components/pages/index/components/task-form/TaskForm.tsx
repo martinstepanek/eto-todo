@@ -14,6 +14,7 @@ import { DetailTextArea } from './DetailTextArea';
 import { DateTypeType, TaskInputType } from '../../../../../types/graphql';
 import DatePickerModal from '../task-form/DatePickerModal';
 import TaskFormListPicker from './TaskFormListPicker';
+import { medias } from '../../../../../styles/breakpoints';
 
 export interface FormHandle {
   open: () => void;
@@ -132,4 +133,10 @@ const TaskForm = forwardRef<FormHandle, TaskFormProps>(
 export default styled(TaskForm)`
   background-color: ${colors.textBackground} !important;
   padding: 15px 0;
+
+  ${medias.sm} {
+    ${Input} {
+      margin-top: 10px;
+    }
+  }
 `;

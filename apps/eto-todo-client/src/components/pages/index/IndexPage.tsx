@@ -1,4 +1,4 @@
-import React, { FC, useRef, useState } from 'react';
+import React, { FC, useMemo, useRef, useState } from 'react';
 import { TaskListType } from './types/TaskListType';
 import TaskListPage from './components/task-list/TaskListPage';
 import styled from 'styled-components';
@@ -9,6 +9,7 @@ import CreateTaskForm from './components/create-task-form/CreateTaskForm';
 import { FormHandle } from './components/task-form/TaskForm';
 import ListPicker from './components/task-list/ListPicker';
 import ClientOnly from './../../../components/ClientOnly';
+import useResize from '../../../hooks/useResize';
 
 const IndexPage: FC = (props) => {
   const [isFormOpen, setIsFormOpen] = useState(false);
@@ -35,6 +36,14 @@ const IndexPage: FC = (props) => {
     setIsPickerOpen(false);
   };
 
+  const resize = useResize();
+  const listPickerHeight = useMemo(() => {
+    if (!resize || resize.documentWidth < resize.breakpoints.sm) {
+      return 64;
+    }
+    return 90;
+  }, [resize, resize]);
+
   return (
     <div {...props}>
       <div className="task-list">
@@ -47,7 +56,7 @@ const IndexPage: FC = (props) => {
             open={isPickerOpen}
             scrollTopAtClose={true}
             onChange={(value) => setIsPickerOpen(value)}
-            overflowHeight={64}
+            overflowHeight={listPickerHeight}
             shadowTip={false}
             swipeableViewsProps={{ slideClassName: 'swipeable-view' }}
           >
@@ -55,6 +64,7 @@ const IndexPage: FC = (props) => {
               value={listType}
               onChange={onPickListType}
               isOpen={isPickerOpen}
+              height={listPickerHeight}
             />
           </SwipeableBottomSheet>
           <SwipeableBottomSheet
