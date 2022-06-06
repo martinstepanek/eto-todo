@@ -11,8 +11,9 @@ import useBooleanState from '../../../../../hooks/useBooleanState';
 import styled from 'styled-components';
 import colors from '../../../../../styles/colors';
 import { DetailTextArea } from './DetailTextArea';
-import { TaskInputType } from '../../../../../types/graphql';
+import { DateTypeType, TaskInputType } from '../../../../../types/graphql';
 import DatePickerModal from '../task-form/DatePickerModal';
+import TaskFormListPicker from './TaskFormListPicker';
 
 export interface FormHandle {
   open: () => void;
@@ -27,8 +28,15 @@ interface TaskFormProps {
 // eslint-disable-next-line react/display-name
 const TaskForm = forwardRef<FormHandle, TaskFormProps>(
   ({ onSubmit, initialValues, ...props }, ref) => {
-    const { register, handleSubmit, setFocus, watch, reset, getValues } =
-      useForm<TaskInputType>();
+    const {
+      register,
+      handleSubmit,
+      setFocus,
+      watch,
+      reset,
+      getValues,
+      setValue,
+    } = useForm<TaskInputType>();
 
     const [isDetailVisible, setIsDetailVisible] = useState(false);
     const showDetailInput = () => {
@@ -66,6 +74,14 @@ const TaskForm = forwardRef<FormHandle, TaskFormProps>(
       reset(initialValues);
       disableSaveButton();
     };
+    const onListPickerSubmit = (values: {
+      specificDateType: DateTypeType;
+      specificDateValue: Date;
+    }) => {
+      setValue('specificDateType', values.specificDateType);
+      setValue('specificDateValue', values.specificDateValue);
+      handleSubmit(onFormSubmit)();
+    };
 
     const [isDatePickerModalOpen, openDatePickerModal, closeDatePickerModal] =
       useBooleanState(false);
@@ -78,6 +94,10 @@ const TaskForm = forwardRef<FormHandle, TaskFormProps>(
 
     return (
       <form onSubmit={handleSubmit(onFormSubmit)} {...props}>
+        <TaskFormListPicker
+          onSubmit={onListPickerSubmit}
+          disabled={!isSaveButtonEnabled}
+        />
         <Input
           type="text"
           placeholder="New task"

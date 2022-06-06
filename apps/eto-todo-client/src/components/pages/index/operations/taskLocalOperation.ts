@@ -8,6 +8,7 @@ import {
   TaskOperationContentFragmentType,
   TaskOperationTypeType,
 } from '../../../../types/graphql';
+import { getDateForListType } from '../../../../helpers/getDateForListType';
 
 const addTask = (
   cache: ApolloCache<unknown>,
@@ -24,12 +25,18 @@ const addTask = (
         variables,
       }
     );
+
     if (data) {
+      const task = {
+        ...taskOperation.task,
+        mutationWhen: getDateForListType(listType),
+      };
+
       cache.writeQuery({
         query,
         variables,
         data: {
-          tasks: [...data.tasks, taskOperation.task],
+          tasks: [...data.tasks, task],
         },
       });
     }

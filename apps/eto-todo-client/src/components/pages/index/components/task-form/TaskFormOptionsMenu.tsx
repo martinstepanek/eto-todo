@@ -38,4 +38,8 @@ export default styled(TaskFormOptionsMenu)`
     margin-right: 30px;
     font-size: 22px;
   }
+
+  ${BasicButton} {
+    transition: 0.3s;
+  }
 `;
