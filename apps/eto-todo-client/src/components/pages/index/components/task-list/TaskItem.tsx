@@ -29,7 +29,7 @@ const TaskItem: FC<TaskItemProps> = ({ task, ...props }) => {
   const onCheckBoxChange = async (value: boolean) => {
     const taskEntryInput: TaskEntryInput = {
       taskId: task.taskId,
-      when: new Date(),
+      when: task.mutationWhen,
     };
 
     if (task.isDone) {

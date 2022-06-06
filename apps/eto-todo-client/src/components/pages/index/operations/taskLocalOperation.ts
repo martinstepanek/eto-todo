@@ -47,10 +47,12 @@ const markAsDoneOrNotDone = (
   taskOperation.inLists.map((listType: TaskListTypeType) => {
     const variables = { listType };
 
-    const data: any = cache.readQuery({
-      query,
-      variables,
-    });
+    const data = cache.readQuery<GetTasksQueryType, GetTasksQueryVariablesType>(
+      {
+        query,
+        variables,
+      }
+    );
 
     const localTaskIndex = data.tasks.findIndex(
       (task: TaskContentFragmentType) =>
@@ -59,7 +61,10 @@ const markAsDoneOrNotDone = (
 
     if (localTaskIndex !== -1) {
       const localTasks = [...data.tasks];
-      localTasks[localTaskIndex] = taskOperation.task;
+      localTasks[localTaskIndex] = {
+        ...localTasks[localTaskIndex],
+        isDone: taskOperation.task.isDone,
+      };
 
       cache.writeQuery({
         query,

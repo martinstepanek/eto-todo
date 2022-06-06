@@ -6,7 +6,7 @@ import PlusButton from '../../../components/base/form/buttons/PlusButton';
 import SwipeableBottomSheet from 'react-swipeable-bottom-sheet';
 import colors from '../../../styles/colors';
 import CreateTaskForm from './components/create-task-form/CreateTaskForm';
-import { FormHandle } from './components/task-form-old/TaskForm';
+import { FormHandle } from './components/task-form/TaskForm';
 import ListPicker from './components/task-list/ListPicker';
 import ClientOnly from './../../../components/ClientOnly';
 

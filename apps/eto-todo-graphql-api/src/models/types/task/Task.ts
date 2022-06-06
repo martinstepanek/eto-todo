@@ -72,4 +72,7 @@ export class Task {
 
   @Field()
   public isDeleted: boolean = false;
+
+  @Field(() => Date, { nullable: true })
+  public mutationWhen: Date;
 }

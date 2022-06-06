@@ -87,6 +87,7 @@ export type TaskType = {
   isDeleted: Scalars['Boolean'];
   isDone: Scalars['Boolean'];
   isRecurrent: Scalars['Boolean'];
+  mutationWhen?: Maybe<Scalars['DateTime']>;
   name: Scalars['String'];
   recurrentDateValue?: Maybe<Scalars['Int']>;
   specificDateType: DateTypeType;
@@ -196,6 +197,7 @@ export type CreateTaskMutationType = {
       isDone: boolean;
       isDelayed: boolean;
       isDeleted: boolean;
+      mutationWhen?: any | null;
     };
   };
 };
@@ -215,6 +217,7 @@ export type GetTasksQueryType = {
     isDone: boolean;
     isDelayed: boolean;
     isDeleted: boolean;
+    mutationWhen?: any | null;
   }>;
 };
 
@@ -231,6 +234,7 @@ export type GetTodoTasksQueryType = {
     isDone: boolean;
     isDelayed: boolean;
     isDeleted: boolean;
+    mutationWhen?: any | null;
   }>;
   thisWeek: Array<{
     __typename?: 'Task';
@@ -241,6 +245,7 @@ export type GetTodoTasksQueryType = {
     isDone: boolean;
     isDelayed: boolean;
     isDeleted: boolean;
+    mutationWhen?: any | null;
   }>;
   thisMonth: Array<{
     __typename?: 'Task';
@@ -251,6 +256,7 @@ export type GetTodoTasksQueryType = {
     isDone: boolean;
     isDelayed: boolean;
     isDeleted: boolean;
+    mutationWhen?: any | null;
   }>;
 };
 
@@ -273,6 +279,7 @@ export type MarkTaskAsDoneMutationType = {
       isDone: boolean;
       isDelayed: boolean;
       isDeleted: boolean;
+      mutationWhen?: any | null;
     };
   } | null;
 };
@@ -296,6 +303,7 @@ export type MarkTaskAsNotDoneMutationType = {
       isDone: boolean;
       isDelayed: boolean;
       isDeleted: boolean;
+      mutationWhen?: any | null;
     };
   } | null;
 };
@@ -309,6 +317,7 @@ export type TaskContentFragmentType = {
   isDone: boolean;
   isDelayed: boolean;
   isDeleted: boolean;
+  mutationWhen?: any | null;
 };
 
 export type TaskOperationContentFragmentType = {
@@ -324,6 +333,7 @@ export type TaskOperationContentFragmentType = {
     isDone: boolean;
     isDelayed: boolean;
     isDeleted: boolean;
+    mutationWhen?: any | null;
   };
 };
 

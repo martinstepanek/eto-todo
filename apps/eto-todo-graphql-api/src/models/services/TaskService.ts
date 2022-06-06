@@ -133,11 +133,14 @@ export class TaskService {
       tasks = [...tasks, ...(await this.getTasksForMonth(forUser, new Date()))];
     }
 
-    return tasks;
+    return tasks.map((task) => {
+      task.mutationWhen = dayDate;
+      return task;
+    });
   }
 
   private async getTasksForWeek(forUser: User, date: Date): Promise<Task[]> {
-    return this.taskRepository.find({
+    const tasks = await this.taskRepository.find({
       where: {
         user: forUser,
         isRecurrent: false,
@@ -149,10 +152,15 @@ export class TaskService {
         deletedAt: IsNull(),
       },
     });
+
+    return tasks.map((task) => {
+      task.mutationWhen = date;
+      return task;
+    });
   }
 
   private async getTasksForMonth(forUser: User, date: Date): Promise<Task[]> {
-    return this.taskRepository.find({
+    const tasks = await this.taskRepository.find({
       where: {
         user: forUser,
         isRecurrent: false,
@@ -163,6 +171,11 @@ export class TaskService {
         ),
         deletedAt: IsNull(),
       },
+    });
+
+    return tasks.map((task) => {
+      task.mutationWhen = date;
+      return task;
     });
   }
 }

@@ -9,6 +9,7 @@ const TASK_CONTENT = gql`
     isDone
     isDelayed
     isDeleted
+    mutationWhen
   }
 `;
 
